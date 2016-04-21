@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: b39d6396b1b59a8468af669a1643aa19
+timeCreated: 1454880203
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: DesertMesh
+    100004: Texture Group
+    100006: CloseUpDesertMesh
+    100008: CloseUpDesertMesh_MeshPart0
+    100010: CloseUpDesertMesh_MeshPart1
+    100012: CloseUpDesertMesh_MeshPart2
+    100014: CloseUpDesertMesh_MeshPart3
+    100016: CloseUpDesertMesh_MeshPart4
+    100018: CrowningSandMesh
+    400000: //RootNode
+    400002: DesertMesh
+    400004: Texture Group
+    400006: CloseUpDesertMesh
+    400008: CloseUpDesertMesh_MeshPart0
+    400010: CloseUpDesertMesh_MeshPart1
+    400012: CloseUpDesertMesh_MeshPart2
+    400014: CloseUpDesertMesh_MeshPart3
+    400016: CloseUpDesertMesh_MeshPart4
+    400018: CrowningSandMesh
+    2300000: DesertMesh
+    2300002: CloseUpDesertMesh_MeshPart0
+    2300004: CloseUpDesertMesh_MeshPart1
+    2300006: CloseUpDesertMesh_MeshPart2
+    2300008: CloseUpDesertMesh_MeshPart3
+    2300010: CloseUpDesertMesh_MeshPart4
+    2300012: CloseUpDesertMesh
+    2300014: CrowningSandMesh
+    3300000: DesertMesh
+    3300002: CloseUpDesertMesh_MeshPart0
+    3300004: CloseUpDesertMesh_MeshPart1
+    3300006: CloseUpDesertMesh_MeshPart2
+    3300008: CloseUpDesertMesh_MeshPart3
+    3300010: CloseUpDesertMesh_MeshPart4
+    3300012: CloseUpDesertMesh
+    3300014: CrowningSandMesh
+    4300000: DesertMesh
+    4300002: CloseUpDesertMesh_MeshPart0
+    4300004: CloseUpDesertMesh_MeshPart1
+    4300006: CloseUpDesertMesh_MeshPart2
+    4300008: CloseUpDesertMesh_MeshPart3
+    4300010: CloseUpDesertMesh_MeshPart4
+    4300012: CloseUpDesertMesh
+    4300014: CrowningSandMesh
+    7400000: modo_Anim
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 180
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

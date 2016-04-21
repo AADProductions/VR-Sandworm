@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 14ba4f2f5d6547442a4dbdba64f149d6
+timeCreated: 1455212300
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: back
+    100002: Head
+    100004: Mouth1_0
+    100006: Mouth1_1
+    100008: Mouth1_2
+    100010: Mouth1_3
+    100012: Mouth2_0
+    100014: Mouth2_1
+    100016: Mouth2_2
+    100018: Mouth2_3
+    100020: Mouth3_0
+    100022: Mouth3_1
+    100024: Mouth3_2
+    100026: Mouth3_3
+    100028: MouthCenter
+    100030: Root
+    100032: //RootNode
+    100034: Tail_00
+    100036: Tail_01
+    100038: Tail_02
+    100040: Tail_03
+    100042: Tail_04
+    100044: Tail_05
+    100046: Tail_06
+    100048: Tail_07
+    100050: Tail_08
+    100052: Tail_09
+    100054: Tail_10
+    100056: Tail_11
+    100058: Tail_12
+    100060: Tail_13
+    100062: Tail_14
+    100064: Tail_15
+    100066: Tail_16
+    100068: Tail_17
+    100070: Tail_18
+    100072: Tail_19
+    100074: Tail_20
+    100076: Tail_21
+    100078: Tail_22
+    100080: Tail_23
+    100082: Tail_24
+    100084: Tail_25
+    100086: Tail_26
+    100088: Tail_27
+    100090: Tail_28
+    100092: Tail_29
+    100094: Tail_30
+    100096: Tail_31
+    100098: Tail_32
+    100100: Tail_33
+    100102: Tail_34
+    100104: Tail_35
+    100106: Tail_36
+    100108: Tail_37
+    100110: Tail_38
+    100112: Tail_39
+    100114: Worm
+    100116: WormParticleEmitter
+    100118: WormSand
+    100120: Camera
+    100122: Directional Light
+    400000: back
+    400002: Head
+    400004: Mouth1_0
+    400006: Mouth1_1
+    400008: Mouth1_2
+    400010: Mouth1_3
+    400012: Mouth2_0
+    400014: Mouth2_1
+    400016: Mouth2_2
+    400018: Mouth2_3
+    400020: Mouth3_0
+    400022: Mouth3_1
+    400024: Mouth3_2
+    400026: Mouth3_3
+    400028: MouthCenter
+    400030: Root
+    400032: //RootNode
+    400034: Tail_00
+    400036: Tail_01
+    400038: Tail_02
+    400040: Tail_03
+    400042: Tail_04
+    400044: Tail_05
+    400046: Tail_06
+    400048: Tail_07
+    400050: Tail_08
+    400052: Tail_09
+    400054: Tail_10
+    400056: Tail_11
+    400058: Tail_12
+    400060: Tail_13
+    400062: Tail_14
+    400064: Tail_15
+    400066: Tail_16
+    400068: Tail_17
+    400070: Tail_18
+    400072: Tail_19
+    400074: Tail_20
+    400076: Tail_21
+    400078: Tail_22
+    400080: Tail_23
+    400082: Tail_24
+    400084: Tail_25
+    400086: Tail_26
+    400088: Tail_27
+    400090: Tail_28
+    400092: Tail_29
+    400094: Tail_30
+    400096: Tail_31
+    400098: Tail_32
+    400100: Tail_33
+    400102: Tail_34
+    400104: Tail_35
+    400106: Tail_36
+    400108: Tail_37
+    400110: Tail_38
+    400112: Tail_39
+    400114: Worm
+    400116: WormParticleEmitter
+    400118: WormSand
+    400120: Camera
+    400122: Directional Light
+    4300000: Worm
+    4300002: WormParticleEmitter
+    4300004: WormSand
+    9500000: //RootNode
+    13700000: Worm
+    13700002: WormParticleEmitter
+    13700004: WormSand
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
