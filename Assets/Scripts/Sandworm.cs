@@ -5,10 +5,11 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class Sandworm : MonoBehaviour {
 	public float InitialDelay = 10f;
-	[Range (0.0f, 1.0f)]
+	[Range (0.0f, 0.65f)]
 	public float NormalizedPosition;
 	public float TotalTime = 720f;
 	public float RoarTime = 10f;
+	public float WormAnimationMultiplier;
 	public Material [] BodySandMats;
 	public Vector3 RandomAcceleration;
 	public Vector3 RotationOffset;
@@ -20,10 +21,30 @@ public class Sandworm : MonoBehaviour {
 	public Material SandwormMat;
 	public AudioSource RumbleSource;
 	public AnimationCurve RumbleCurve;
-	public AnimationCurve CurnedSandCurve;
+	public AnimationCurve ChurnedSandCurve;
+	public AnimationCurve WormHeightCurve;
+	public AnimationCurve MiniSprayCurve;
+	public AnimationCurve InitialSprayCurve;
+	public AnimationCurve InitialSprayYPos;
+	public AnimationCurve FallingSandCurve;
+	public AnimationCurve [] ParticleCurves;
+	public ParticleSystem [] ParticleSystems;
+	public float [] ParticleEmissionRates;
+	public AnimationCurve FallingParticlesCurve;
 	public Material ChurnedSandMat;
 	public SkinnedMeshRenderer ParticleEmitter;
+	public SkinnedMeshRenderer Dunes;
+	public AnimationCurve[] DuneBlendShapes;
 	public Transform [] SplineNodes;
+	public Transform SplineNodeParent;
+	public Transform UnderSprayParent;
+	public Transform UnderSpray;
+	public Vector3 UnderSprayRotationOffset;
+	public Vector3 UnderSprayPositionOffset;
+	public Kvant.Spray MiniSpray;
+	public Kvant.Spray InitialSpray;
+	public GameObject Spray;
+	public GameObject SprayPrefab;
 	Vector3 [] smoothPositions;
 	Quaternion [] smoothRotations;
 	Vector3 [] startPositions;
@@ -143,6 +164,12 @@ public class Sandworm : MonoBehaviour {
 		cloth.collisionMassScale = 0.5f;
 		cloth.sleepThreshold = 1f;
 		cloth.damping = 1f;*/
+
+		UnderSprayParent = GameObject.Find ("MouthCenter").transform;//GameObject.Find ("Head").transform;
+
+		Spray = GameObject.Instantiate (SprayPrefab) as GameObject;
+		Spray.transform.parent = GameObject.Find ("Mouth1_2").transform;
+		Spray.transform.localPosition = Vector3.zero;
 	}
 
 	void OnDisable () {
@@ -150,7 +177,14 @@ public class Sandworm : MonoBehaviour {
 			TailPieces [i].localPosition = startPositions [i];
 			TailPieces [i].localEulerAngles = startRotations [i];
 		}
+		if (Spray != null) {
+			if (!Application.isPlaying) {
+				GameObject.DestroyImmediate (Spray);
+			}
+		}
 	}
+
+	RaycastHit hit;
 
 	void Update () {
 		
@@ -158,6 +192,49 @@ public class Sandworm : MonoBehaviour {
 			NormalizedPosition = Mathf.Clamp01 (((Time.time - InitialDelay) - startTime) / TotalTime);
 		} else if (Suspend) {
 			return;
+		}
+
+
+		if (Physics.Raycast (UnderSprayParent.position + Vector3.up * 100, Vector3.down, out hit, 1000)) {
+			Vector3 rotation = UnderSprayParent.transform.eulerAngles;
+			rotation.x = 0f;
+			rotation.z = 0f;
+			UnderSpray.transform.eulerAngles = rotation;
+			UnderSpray.transform.position = hit.point;
+			UnderSpray.transform.Translate (UnderSprayPositionOffset);
+			UnderSpray.transform.Rotate (UnderSprayRotationOffset);
+		}
+
+		for (int i = 0; i < ParticleCurves.Length; i++) {
+			float emission = ParticleCurves [i].Evaluate (NormalizedPosition);
+			ParticleSystem.EmissionModule emit = ParticleSystems [i].emission;
+			if (emission <= 0) {
+				emit.enabled = false;
+			} else {
+				emit.enabled = true;
+				ParticleSystem.MinMaxCurve rate = emit.rate;
+				rate.constant = emission * ParticleEmissionRates [i];
+				emit.rate = rate;
+			}
+		}
+
+		Vector3 splinePos = SplineNodeParent.position;
+		splinePos.y = WormHeightCurve.Evaluate (NormalizedPosition);
+		SplineNodeParent.position = splinePos;
+
+		Vector3 miniSprayPos = MiniSpray.transform.position;
+		miniSprayPos.y = WormHeightCurve.Evaluate (NormalizedPosition);
+		MiniSpray.transform.position = miniSprayPos;
+
+		MiniSpray.throttle = MiniSprayCurve.Evaluate (NormalizedPosition);
+
+		InitialSpray.throttle = InitialSprayCurve.Evaluate (NormalizedPosition);
+		Vector3 initialSprayPos = InitialSpray.transform.position;
+		initialSprayPos.y = InitialSprayYPos.Evaluate (NormalizedPosition);
+		InitialSpray.transform.position = initialSprayPos;
+
+		for (int i = 0; i < DuneBlendShapes.Length; i++) {
+			Dunes.SetBlendShapeWeight (i, DuneBlendShapes [i].Evaluate (NormalizedPosition) * 100);
 		}
 
 		//update the spline (since we're animating nodes)
@@ -188,29 +265,43 @@ public class Sandworm : MonoBehaviour {
 			TailPieces [i].localScale = Vector3.one;
 		}
 
-		animation ["SandwormAnimation"].normalizedTime = NormalizedPosition;
+		animation ["SandwormAnimation"].normalizedTime = NormalizedPosition * WormAnimationMultiplier;
 		splineAnimation ["SplineAnimation"].normalizedTime = NormalizedPosition;
 		animation.Sample ();
 		splineAnimation.Sample ();
 
-		ChurnedSandMat.SetFloat ("_Cutoff", CurnedSandCurve.Evaluate (NormalizedPosition));
+		ChurnedSandMat.SetTextureOffset ("_SandTex", new Vector2 (FallingSandCurve.Evaluate (NormalizedPosition) * -10, 0));
+		ChurnedSandMat.SetFloat ("_MaskTime", ChurnedSandCurve.Evaluate (NormalizedPosition));
+		ChurnedSandMat.SetFloat ("_TimeOffset", ChurnedSandCurve.Evaluate (NormalizedPosition));
+		ChurnedSandMat.SetVector ("_PosOffset", new Vector4 (0f, ChurnedSandCurve.Evaluate (NormalizedPosition), 0f, 0f));
+		//ChurnedSandMat.SetFloat ("_Cutoff", CurnedSandCurve.Evaluate (NormalizedPosition));
 	}
 
 	void OnDrawGizmos () {
 		if (Suspend)
 			return;
+
+		for (int i = 0; i < ParticleSystems.Length; i++) {
+			if (ParticleSystems [i].emission.enabled) {
+				Gizmos.color = Color.Lerp (Color.blue, Color.clear, 1f - ParticleCurves [i].Evaluate (NormalizedPosition));
+				Gizmos.DrawCube (ParticleSystems [i].transform.position, ParticleSystems [i].shape.radius * Vector3.one);
+			}
+		}
+
+		Gizmos.color = Color.Lerp (Color.blue, Color.clear, 1f - MiniSprayCurve.Evaluate (NormalizedPosition));
+		Gizmos.DrawCube (MiniSpray.transform.position, Vector3.one);
 		
-		for (int i = 0; i < SplineNodes.Length; i++) {
+		/*for (int i = 0; i < SplineNodes.Length; i++) {
 			if (i > 0 && (SplineNodes [i] == SplineNodes [i - 1] || SplineNodes [i].position == SplineNodes [i - 1].position)) {
 				Gizmos.color = Color.yellow;
 				Gizmos.DrawSphere (SplineNodes [i].position, 25f);
 			} else {
-				Gizmos.color = Color.Lerp (Color.red, Color.blue, (float)i / SplineNodes.Length);
+				Gizmos.color = Color.Lerp (Color.Lerp (Color.red, Color.clear, 0.9f), Color.Lerp (Color.blue, Color.clear, 0.9f), (float)i / SplineNodes.Length);
 				Gizmos.DrawSphere (SplineNodes [i].position, 15f);
 				if (i < SplineNodes.Length - 1) {
 					Gizmos.DrawLine (SplineNodes [i].position, SplineNodes [i + 1].position);
 				}
 			}
-		}
+		}*/
 	}
 }

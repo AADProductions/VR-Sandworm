@@ -15,6 +15,10 @@ ModelImporter:
     100014: CloseUpDesertMesh_MeshPart3
     100016: CloseUpDesertMesh_MeshPart4
     100018: CrowningSandMesh
+    100020: ParticleMesh1
+    100022: MistParticleMesh1
+    100024: ParticleMesh2
+    100026: ParticleMesh3
     400000: //RootNode
     400002: DesertMesh
     400004: Texture Group
@@ -25,6 +29,10 @@ ModelImporter:
     400014: CloseUpDesertMesh_MeshPart3
     400016: CloseUpDesertMesh_MeshPart4
     400018: CrowningSandMesh
+    400020: ParticleMesh1
+    400022: MistParticleMesh1
+    400024: ParticleMesh2
+    400026: ParticleMesh3
     2300000: DesertMesh
     2300002: CloseUpDesertMesh_MeshPart0
     2300004: CloseUpDesertMesh_MeshPart1
@@ -33,6 +41,10 @@ ModelImporter:
     2300010: CloseUpDesertMesh_MeshPart4
     2300012: CloseUpDesertMesh
     2300014: CrowningSandMesh
+    2300016: ParticleMesh1
+    2300018: MistParticleMesh1
+    2300020: ParticleMesh2
+    2300022: ParticleMesh3
     3300000: DesertMesh
     3300002: CloseUpDesertMesh_MeshPart0
     3300004: CloseUpDesertMesh_MeshPart1
@@ -41,6 +53,10 @@ ModelImporter:
     3300010: CloseUpDesertMesh_MeshPart4
     3300012: CloseUpDesertMesh
     3300014: CrowningSandMesh
+    3300016: ParticleMesh1
+    3300018: MistParticleMesh1
+    3300020: ParticleMesh2
+    3300022: ParticleMesh3
     4300000: DesertMesh
     4300002: CloseUpDesertMesh_MeshPart0
     4300004: CloseUpDesertMesh_MeshPart1
@@ -49,6 +65,10 @@ ModelImporter:
     4300010: CloseUpDesertMesh_MeshPart4
     4300012: CloseUpDesertMesh
     4300014: CrowningSandMesh
+    4300016: ParticleMesh1
+    4300018: MistParticleMesh1
+    4300020: ParticleMesh2
+    4300022: ParticleMesh3
     7400000: modo_Anim
     9500000: //RootNode
   materials:
@@ -58,7 +78,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -72,7 +92,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1000
